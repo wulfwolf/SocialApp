@@ -1,0 +1,80 @@
+###
+//LOGIN
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "t1",
+    "password": "1"
+}
+###
+//COMMENT
+POST http://localhost:3000/api/comment/6392ccbb66f6555356352485
+Content-Type: application/json
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA4NDI2MDN9.BFvABvSsDFXE_miGZRGOJJh8TzER4AymKmzGI5v2dm0
+
+{
+    "content": "hi day la comment test"
+}
+###
+//Send Message
+POST http://localhost:3000/api/message/6392cb4596ccd6859307e589
+Content-Type: application/json
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA4NDI2MDN9.BFvABvSsDFXE_miGZRGOJJh8TzER4AymKmzGI5v2dm0
+
+{
+    "content": "hi day la msg test"
+}
+###
+//Register
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "t3",
+    "password": "1",
+    "alias": "mtCub",
+    "avatarURL": "https://preview.redd.it/hifk9jeep2c71.jpg?auto=webp&s=e4008c17e531786f68c2cd9a465727e096862076"
+}
+###
+//create post
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA1NjQ5NTZ9.YFUBD--vVG77-N4BiHSbe38kbJYHjGKzMQcCXK_eg5A
+
+{
+    "content": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA1NjQ5NTZ9.YFUBD--vVG77-N4BiHSbe38kbJYHjGKzMQcCXK_eg5A",
+    "img": "https://w0.peakpx.com/wallpaper/307/610/HD-wallpaper-video-game-arknights-mountain-arknights.jpg"
+}
+
+###
+//FOLLOW/UNFOLLOW A USER
+POST http://localhost:3000/api/follow/6392cb4596ccd6859307e589
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2ZhZWQ2MDRmOTEwY2VmODVmZDMiLCJpYXQiOjE2NzA1NzA5NDJ9.dkpUphSEJ-EidAuEcQGOt2XmPo5MdTA6-0yKLOucgLs
+###
+//GET ALL COMMENTS
+GET http://localhost:3000/api/comment/6396abcac32814e4b37db343
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA4NDMyMTJ9.7V2GKp4wMauyZOQzbu3n1Z2xFOgaNoXgtHrBO_yrmUQ
+
+###
+//GET FOLLOWING POSTS 
+GET http://localhost:3000/api/posts/6392ca9196ccd6859307e585
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA1NzEwMDR9.MkjtaRatDfXmCwPirGJYHIrGlB7ohtuGSQw47A9SRGU
+
+###
+//Get User Followings
+GET http://localhost:3000/api/follow/followings/6392ca9196ccd6859307e585
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA1NjY3MDh9.fEJiY9t3KjmMV4-dEo8oZfQQ0xy2KpWs2jrn67YqXxQ
+###
+//Get user Followers
+GET http://localhost:3000/api/follow/followers/6392ca9196ccd6859307e585
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA1NjY3MDh9.fEJiY9t3KjmMV4-dEo8oZfQQ0xy2KpWs2jrn67YqXxQ
+###
+//Get user img
+GET http://localhost:3000/api/user/6392ca9196ccd6859307e585
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA1NjY3MDh9.fEJiY9t3KjmMV4-dEo8oZfQQ0xy2KpWs2jrn67YqXxQ
+###
+//LIKE POST
+PUT http://localhost:3000/api/posts/like/6392ccbb66f6555356352485
+Content-Type: application/json
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRjZGU0ZWM5NDE1OTJlNWYwY2I1OTAiLCJpYXQiOjE2NTg2NDYwMjN9.i_EYwSKwMi-TULtnqMxIpM5a0pVR2BhqxbolJhx19U4
