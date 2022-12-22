@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "Social-app-V2",
+    "slug": "Social-app-V2",
+    "version": "1.0.0",
+    "android": { "softwareKeyboardLayoutMode": "pan" },
+    "assetBundlePatterns": ["**/*"]
+  }
+}
