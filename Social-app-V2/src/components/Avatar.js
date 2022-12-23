@@ -2,15 +2,13 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { COLORS } from "../constants";
 
-export default function Avatar({ URL, h, w, r, clickAvatarHandle }) {
+export default function Avatar({ URL, h, w, clickAvatarHandle }) {
   return (
     <TouchableOpacity onPress={clickAvatarHandle} activeOpacity={0.9}>
       <View
         style={{
           height: h ? h : 48,
           width: w ? w : 48,
-          // borderWidth: 1,
-          borderRadius: r ? r : 15,
           justifyContent: "center",
           alignItems: "center",
           borderColor: COLORS.borderBox,
@@ -28,7 +26,7 @@ export default function Avatar({ URL, h, w, r, clickAvatarHandle }) {
         </Text>
         <Image
           source={{ uri: URL }}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", borderRadius: 6 }}
         />
       </View>
     </TouchableOpacity>

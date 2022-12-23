@@ -37,7 +37,7 @@ export default function Profileheader({
             flexDirection: "row",
           }}
         >
-          <Avatar h={(48 * 3) / 2} w={(48 * 3) / 2} r={20} URL={avatarURL} />
+          <Avatar h={(48 * 3) / 2} w={(48 * 3) / 2} URL={avatarURL} />
           <View
             style={{
               flexDirection: "row",
