@@ -4,7 +4,7 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "t1",
+    "username": "t2",
     "password": "1"
 }
 ###
@@ -18,12 +18,12 @@ Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzky
 }
 ###
 //Send Message
-POST http://localhost:3000/api/message/6392cb4596ccd6859307e589
+POST http://localhost:3000/api/message/6392ca9196ccd6859307e585
 Content-Type: application/json
-Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA4NDI2MDN9.BFvABvSsDFXE_miGZRGOJJh8TzER4AymKmzGI5v2dm0
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2I0NTk2Y2NkNjg1OTMwN2U1ODkiLCJpYXQiOjE2NzIwMjQwNjV9.4s_Kpc7WVMM22v15JU9yqF5TaS2_H9JItj8Kb1SyOPA
 
 {
-    "content": "hi day la msg test"
+    "content": "3"
 }
 ###
 //Register

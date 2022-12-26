@@ -35,10 +35,8 @@ export default function ProfileScreen({ navigation, route }) {
     );
 
     if (check) {
-      console.log("found");
       setCheck(false);
     } else {
-      console.log("not found");
       setCheck(true);
     }
   };

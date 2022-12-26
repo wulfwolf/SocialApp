@@ -1,6 +1,6 @@
-// import images from "./images";
-// import icons from "./icons";
+import { io } from "socket.io-client";
 import { COLORS, SIZES, FONTS } from "./theme";
-// const distanceMatrixKey = "me0hVYoXfLZ0toh23CX3KXJMopUzb";
+const serverUrl = "http://192.168.1.234:5000";
+const socket = io(serverUrl);
 const localhost = "192.168.1.234";
-export { COLORS, SIZES, FONTS, localhost };
+export { COLORS, SIZES, FONTS, localhost, socket };

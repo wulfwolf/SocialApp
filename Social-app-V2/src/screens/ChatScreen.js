@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
 import React, { useState, useCallback, useEffect } from "react";
 import { GiftedChat } from "react-native-gifted-chat";
-import { localhost } from "../constants";
+import { localhost, socket } from "../constants";
 import axios from "axios";
+
 export default function ChatScreen({ route }) {
   const myInfor = route.params.myInfor;
   const token = route.params.myToken;
@@ -22,6 +22,9 @@ export default function ChatScreen({ route }) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    socket.connect();
+  }, []);
 
   useEffect(() => {
     const fetch = async () => {
@@ -53,8 +56,13 @@ export default function ChatScreen({ route }) {
       });
       setMessages(msgFormat);
     };
+
     fetch();
+    socket.on("message", (msg) => {
+      fetch();
+    });
   }, []);
+  console.log("first");
 
   const onSend = useCallback(async (messages = []) => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -68,6 +76,7 @@ export default function ChatScreen({ route }) {
       setMessages((previousMessages) =>
         GiftedChat.append(previousMessages, messages)
       );
+      socket.emit("message", messages[0].text);
     } else {
       alert(res.data.message);
     }
