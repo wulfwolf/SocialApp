@@ -4,6 +4,46 @@ const router = express.Router();
 const Post = require("../models/Post");
 const verifyToken = require("../middleware/auth");
 const Follow = require("../models/Follow");
+// Get single user post
+router.get("/user/:userId", verifyToken, async (req, res) => {
+  try {
+    const userPost = await Post.find({ user: req.params.userId }).populate(
+      "user",
+      ["username", "avatarURL", "alias"]
+    );
+    return res.json({ success: true, message: "Success", userPost });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error!" });
+  }
+});
+
+// POST api/post     create
+router.post("/", verifyToken, async (req, res) => {
+  const { content, img } = req.body;
+
+  if (!content) {
+    return res
+      .status(400)
+      .json({ success: false, message: "content is required" });
+  }
+
+  try {
+    const newPost = new Post({
+      content,
+      img,
+      user: req.userId,
+    });
+
+    await newPost.save();
+    res.json({ success: true, message: "posted!", post: newPost });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "internal server error" });
+  }
+});
 // get all followings post
 // GET api/post
 router.get("/:userId", verifyToken, async (req, res) => {

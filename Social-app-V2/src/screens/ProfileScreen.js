@@ -18,6 +18,7 @@ export default function ProfileScreen({ navigation, route }) {
     followers: 0,
     followings: 0,
   });
+  const [posts, setPosts] = useState([]);
   const checkHandle = async () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${myToken}`;
     const followers = await axios.get(
@@ -43,8 +44,18 @@ export default function ProfileScreen({ navigation, route }) {
 
   useEffect(() => {
     checkHandle();
+    getPosts();
   }, [check]);
 
+  const getPosts = async () => {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${myToken}`;
+    const res = await axios.get(
+      `http://${localhost}:3000/api/posts/user/${data._id}`
+    );
+    if (res) {
+      setPosts(res.data.userPost);
+    }
+  };
   const followHandle = async () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${myToken}`;
     const followResult = await axios.post(
@@ -71,11 +82,13 @@ export default function ProfileScreen({ navigation, route }) {
         myInfor={myInfor}
         myToken={myToken}
         receiver={data}
+        posts={posts.length}
       />
       <Profilealbum
         navigation={navigation}
         token={myToken}
         user_id={data._id}
+        posts={posts}
       />
     </SafeAreaView>
   );

@@ -1,9 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { usePreventScreenCapture } from "expo-screen-capture";
 import { GiftedChat } from "react-native-gifted-chat";
 import { localhost, socket } from "../constants";
 import axios from "axios";
 
 export default function ChatScreen({ route }) {
+  usePreventScreenCapture();
   const myInfor = route.params.myInfor;
   const token = route.params.myToken;
   const receiver = route.params.receiver;
@@ -22,48 +24,47 @@ export default function ChatScreen({ route }) {
       console.log(error);
     }
   };
+  const fetch = async () => {
+    await getSMS();
+    const msgFormat = tmp.map((mess) => {
+      if (mess.user._id == myInfor._id) {
+        return {
+          _id: mess._id,
+          text: mess.content,
+          createdAt: mess.createdAt,
+          user: {
+            _id: 1,
+            name: mess.user.username,
+            avatar: mess.user.avatarURL,
+          },
+        };
+      } else {
+        return {
+          _id: mess._id,
+          text: mess.content,
+          createdAt: mess.createdAt,
+          user: {
+            _id: 2,
+            name: mess.receiver.username,
+            avatar: mess.user.avatarURL,
+          },
+        };
+      }
+    });
+    setMessages(msgFormat);
+  };
+
   useEffect(() => {
     socket.connect();
+    fetch();
   }, []);
 
   useEffect(() => {
-    const fetch = async () => {
-      await getSMS();
-      const msgFormat = tmp.map((mess) => {
-        if (mess.user._id == myInfor._id) {
-          return {
-            _id: mess._id,
-            text: mess.content,
-            createdAt: mess.createdAt,
-            user: {
-              _id: 1,
-              name: mess.user.username,
-              avatar: mess.user.avatarURL,
-            },
-          };
-        } else {
-          return {
-            _id: mess._id,
-            text: mess.content,
-            createdAt: mess.createdAt,
-            user: {
-              _id: 2,
-              name: mess.receiver.username,
-              avatar: mess.user.avatarURL,
-            },
-          };
-        }
-      });
-      setMessages(msgFormat);
-    };
-
-    fetch();
     socket.on("message", (msg) => {
       fetch();
     });
+    return () => socket.disconnect();
   }, []);
-  console.log("first");
-
   const onSend = useCallback(async (messages = []) => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const res = await axios.post(

@@ -18,6 +18,7 @@ export default function Profileheader({
   myInfor,
   myToken,
   receiver,
+  posts,
 }) {
   return (
     <View>
@@ -122,7 +123,9 @@ export default function Profileheader({
             </Text>
           </View>
           <View style={{ flex: 1, alignItems: "center" }}>
-            <Text style={{ ...FONTS.bold, color: COLORS.inputText }}>250</Text>
+            <Text style={{ ...FONTS.bold, color: COLORS.inputText }}>
+              {posts}
+            </Text>
             <Text style={{ ...FONTS.normal, color: COLORS.inputText }}>
               Posts
             </Text>

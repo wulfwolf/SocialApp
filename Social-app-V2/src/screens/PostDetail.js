@@ -46,6 +46,7 @@ export default function PostDetail({ navigation, route }) {
           navigation={navigation}
           post_id={post._id}
           token={token}
+          shareQuantity={post.shares.length}
         />
         <View style={{ width: "90%", alignSelf: "center", marginBottom: 10 }}>
           <Text

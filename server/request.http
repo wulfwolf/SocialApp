@@ -1,6 +1,6 @@
 ###
 //LOGIN
-POST http://localhost:3000/api/auth/login
+POST https://localhost:4000/api/auth/login
 Content-Type: application/json
 
 {
@@ -55,6 +55,10 @@ Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzky
 //GET ALL COMMENTS
 GET http://localhost:3000/api/comment/6396abcac32814e4b37db343
 Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA4NDMyMTJ9.7V2GKp4wMauyZOQzbu3n1Z2xFOgaNoXgtHrBO_yrmUQ
+###
+//GET USER POSTS 
+GET http://localhost:3000/api/posts/user/6392ca9196ccd6859307e585
+Authorization: Bearier eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzkyY2E5MTk2Y2NkNjg1OTMwN2U1ODUiLCJpYXQiOjE2NzA1NzEwMDR9.MkjtaRatDfXmCwPirGJYHIrGlB7ohtuGSQw47A9SRGU
 
 ###
 //GET FOLLOWING POSTS 
